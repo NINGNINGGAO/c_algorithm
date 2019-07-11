@@ -1,3 +1,6 @@
+#include <stdio.h>
+
+
 int* BubbleSort(int* nums, int numsSize) {
     int i, j, temp;
     for (i = 0; i < numsSize - 1; i++) {
@@ -10,4 +13,15 @@ int* BubbleSort(int* nums, int numsSize) {
         }
     }
     return nums;
+}
+
+main() {
+    int nums[] = {7,8,9,4,5,6,1,2,3};
+    int numsSize = sizeof(nums)/sizeof(int);
+    //printf("%d\n", numsSize);
+    int* p = BubbleSort(nums, numsSize);
+    while (*p != '\0') {
+        printf("%d\n",*p);
+        p++;
+    }
 }
