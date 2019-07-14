@@ -1,10 +1,6 @@
-<<<<<<< Updated upstream
-int* InsertionSort(int* nums, int numsSize) {
-=======
 #include <stdio.h>
 
 void InsertionSort(int* nums, int numsSize) {
->>>>>>> Stashed changes
     int i, j, temp;
     for (i = 0; i < numsSize; i++) {
         temp = nums[i];
@@ -13,19 +9,6 @@ void InsertionSort(int* nums, int numsSize) {
         }
         nums[j+1] = temp;
     }
-<<<<<<< Updated upstream
-    return nums;
-}
-
-main() {
-    int nums[] = {7,8,9,4,5,6,1,2,3};
-    int numsSize = sizeof(nums)/sizeof(int);
-    //printf("%d\n", numsSize);
-    int* p = InsertionSort(nums, numsSize);
-    while (*p != '\0') {
-        printf("%d\n",*p);
-        p++;
-=======
 }
 
 main() {
@@ -34,6 +17,5 @@ main() {
     InsertionSort(nums, numsSize);
     for (int i = 0; i < numsSize; i++) {
         printf("%d\n", nums[i]);
->>>>>>> Stashed changes
     }
 }
