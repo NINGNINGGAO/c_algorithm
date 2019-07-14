@@ -1,4 +1,6 @@
-int* SelectionSort(int* nums, int numsSize) {
+#include <stdio.h>
+
+void SelectionSort(int* nums, int numsSize) {
     int i, j, k, temp;
     for (i = 0; i < numsSize - 1; i++) {
         k = i;
@@ -11,5 +13,13 @@ int* SelectionSort(int* nums, int numsSize) {
         nums[i] = nums[k];
         nums[k] = temp;
     }
-    return nums;
+}
+
+main() {
+    int nums[] = {7,8,9,4,5,6,1,2,3,0};
+    int numsSize = sizeof(nums) / sizeof(int);
+    SelectionSort(nums, numsSize);
+    for (int i = 0; i < numsSize; i++) {
+        printf("%d\n", nums[i]);
+    }
 }
