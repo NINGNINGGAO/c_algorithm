@@ -1,4 +1,6 @@
-int* InsertionSort(int* nums, int numsSIze) {
+#include <stdio.h>
+
+void InsertionSort(int* nums, int numsSize) {
     int i, j, temp;
     for (i = 0; i < numsSize; i++) {
         temp = nums[i];
@@ -7,5 +9,13 @@ int* InsertionSort(int* nums, int numsSIze) {
         }
         nums[j+1] = temp;
     }
-    return nums;
+}
+
+main() {
+    int nums[] = {7,8,9,4,5,6,1,2,3,0};
+    int numsSize = sizeof(nums) / sizeof(int);
+    InsertionSort(nums, numsSize);
+    for (int i = 0; i < numsSize; i++) {
+        printf("%d\n", nums[i]);
+    }
 }
