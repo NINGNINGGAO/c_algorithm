@@ -1,37 +1,25 @@
 #include <stdio.h>
 
-int Parent(int i) {
-          return i >> 1;
-}
-
-int Left(int i) {
-          return 2 * i;
-}
-
-int Right(int i) {
-          return 2 * i + 1;
-}
-
 void Max_Heapify(int* nums, int numsSize, int i) {
-          int l = Left(i), r = Right(i);
+          int l = 2 * i + 1, r = 2 * i + 2;
           int largest = i;
           int temp;
-          if (l <= numsSize && nums[l - 1] > nums[i - 1]) {     //As A[1,...,numsSize], so -1
+          if (l < numsSize && nums[l] > nums[largest]) {
                     largest = l;
           }
-          if (r <= numsSize && nums[r - 1] > nums[largest - 1]) {
+          if (r < numsSize && nums[r] > nums[largest]) {
                     largest = r;
           }
           if (largest != i) {
-                    temp = nums[i - 1];
-                    nums[i - 1] = nums[largest - 1];
-                    nums[largest - 1] = temp;
+                    temp = nums[i];
+                    nums[i] = nums[largest];
+                    nums[largest] = temp;
                     Max_Heapify(nums, numsSize, largest);
           }
 }
 
 void Build_Max_Heap(int* nums,int numsSize) {
-          for (int i = numsSize >> 1; i >=1; i--) {
+          for (int i = (numsSize >> 1) - 1; i >= 0; i--) { //Introduction to algorithms p85 6.1-7
                     Max_Heapify(nums, numsSize, i);
           }
 }
@@ -39,15 +27,12 @@ void Build_Max_Heap(int* nums,int numsSize) {
 void HeapSort(int* nums, int numsSize) {
           Build_Max_Heap(nums, numsSize);
           int temp;
-          for (int i = numsSize; i >= 2; i--) {
-                    temp = nums[i - 1];
-                    nums[i - 1] = nums[0];
+          for (int i = numsSize - 1; i >= 1; i--) {
+                    temp = nums[i];
+                    nums[i] = nums[0];
                     nums[0] = temp;
                     numsSize--;
-                    Max_Heapify(nums, numsSize, 1);
-                    /*for (int i = 0; i < numsSize; i++) {
-                              printf("%d\n", nums[i]);
-                    }*/
+                    Max_Heapify(nums, numsSize, 0);
           }
 }
 
