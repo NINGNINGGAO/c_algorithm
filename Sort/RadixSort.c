@@ -61,5 +61,4 @@ main() {
           for (int i = 0; i < numsSize; i++) {
                     printf("%d\n", nums[i]);
           }
-          //printf("%d\n", 9 / 100);
 }
