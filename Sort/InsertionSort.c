@@ -1,13 +1,15 @@
 #include <stdio.h>
 
 void InsertionSort(int* nums, int numsSize) {
-    int i, j, temp;
-    for (i = 0; i < numsSize; i++) {
-        temp = nums[i];
-        for (j = i - 1; j >= 0 && nums[j] > temp; j--) {
-            nums [j + 1] = nums[j];
+    int key;
+    for (int j = 1; j < numsSize; j++) {
+        key = nums[j];
+        int i = j - 1;
+        while (i >= 0 && nums[i] > key) {
+            nums[i + 1] = nums[i];
+            i = i - 1;
         }
-        nums[j+1] = temp;
+        nums[i + 1] = key;
     }
 }
 
