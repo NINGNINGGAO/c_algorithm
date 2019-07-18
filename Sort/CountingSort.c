@@ -28,7 +28,7 @@ void CountingSort(int* nums, int numsSize, int** numsSort) {
 
 main() {
           int* numsSort;
-          int nums[] = {7,8,9,4,5,6,2,3};
+          int nums[] = {7,8,9,4,5,6,2,3,17,18,19,15,16,12,13,50};
           int numsSize = sizeof(nums) / sizeof(int);
           CountingSort(nums, numsSize, &numsSort);
           for (int i = 0; i < numsSize; i++) {
