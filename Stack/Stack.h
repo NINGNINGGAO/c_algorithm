@@ -1,4 +1,5 @@
-#ifndef _Stack_H
+#ifndef _STACK_H
+#define _STACK_H
 
 typedef int ElementType;
 struct Node;

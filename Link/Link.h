@@ -1,4 +1,5 @@
-#ifndef _LIST_H
+#ifndef _LINK_H
+#define _LINK_H
 
 struct Node;
 typedef struct Node *PtrToNode;
