@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "List.h"
+#include "Link.h"
 
 main() {
           List L;
