@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "List.h"
+#include "Link.h"
 
 List MakeEmpty(List L) {
           Position P, TmpCell;
@@ -80,9 +80,14 @@ void Insert(ElementType X, List L, Position P) {
           Position TmpCell;
 
           TmpCell = malloc(sizeof(struct Node));
-          TmpCell->Element = X;
-          TmpCell->Next = P->Next;
-          P->Next = TmpCell;         
+          if (TmpCell == NULL) {
+                    printf("Out of space!!!\n");
+                    printf("Operation failed\n");
+          } else {
+                    TmpCell->Element = X;
+                    TmpCell->Next = P->Next;
+                    P->Next = TmpCell;
+          }      
 }
 
 int InsertKth(ElementType X, List L, int Key) {
