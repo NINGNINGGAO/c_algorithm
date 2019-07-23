@@ -3,9 +3,13 @@
 #include "List.h"
 
 List MakeEmpty(List L) {
-          L = malloc(sizeof(struct Node));
-          L->Element = 0;
-          L->Next = NULL;
+          Position P, TmpCell;
+          P = L;
+          if (!IsLast(P, L)) {
+                    TmpCell = P->Next;
+                    P->Next = TmpCell->Next;
+                    free(TmpCell);
+          }
           return L;
 }
 
