@@ -1,3 +1,9 @@
+/*
+ * @Author: AGOGIN 
+ * @Date: 2019-07-28 16:08:48 
+ * @Last Modified by:   AGOGIN 
+ * @Last Modified time: 2019-07-28 16:08:48 
+ */
 #include <stdio.h>
 
 void Merging(int* nums, int left, int right) {

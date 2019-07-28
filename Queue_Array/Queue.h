@@ -1,3 +1,9 @@
+/*
+ * @Author: AGOGIN 
+ * @Date: 2019-07-28 16:07:59 
+ * @Last Modified by:   AGOGIN 
+ * @Last Modified time: 2019-07-28 16:07:59 
+ */
 #ifndef _QUEUE_H
 #define _QUEUE_H
 

@@ -1,3 +1,9 @@
+/*
+ * @Author: AGOGIN 
+ * @Date: 2019-07-28 16:08:51 
+ * @Last Modified by:   AGOGIN 
+ * @Last Modified time: 2019-07-28 16:08:51 
+ */
 #include <stdio.h>
 
 int partition(int* nums, int p, int r) {

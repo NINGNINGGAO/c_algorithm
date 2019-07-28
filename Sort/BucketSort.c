@@ -1,3 +1,9 @@
+/*
+ * @Author: AGOGIN 
+ * @Date: 2019-07-28 16:08:35 
+ * @Last Modified by:   AGOGIN 
+ * @Last Modified time: 2019-07-28 16:08:35 
+ */
 #include <stdio.h>
 
 typedef struct LINK {

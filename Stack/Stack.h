@@ -1,3 +1,9 @@
+/*
+ * @Author: AGOGIN 
+ * @Date: 2019-07-28 16:08:28 
+ * @Last Modified by:   AGOGIN 
+ * @Last Modified time: 2019-07-28 16:08:28 
+ */
 #ifndef _STACK_H
 #define _STACK_H
 

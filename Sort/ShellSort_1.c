@@ -1,3 +1,9 @@
+/*
+ * @Author: AGOGIN 
+ * @Date: 2019-07-28 16:09:04 
+ * @Last Modified by:   AGOGIN 
+ * @Last Modified time: 2019-07-28 16:09:04 
+ */
 #include <stdio.h>
 
 void ShellSort_1(int* nums, int numsSize) {

@@ -1,3 +1,9 @@
+/*
+ * @Author: AGOGIN 
+ * @Date: 2019-07-28 16:08:32 
+ * @Last Modified by:   AGOGIN 
+ * @Last Modified time: 2019-07-28 16:08:32 
+ */
 #include <stdio.h>
 
 void BubbleSort(int* nums, int numsSize) {
