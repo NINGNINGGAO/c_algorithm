@@ -173,9 +173,9 @@ AvlTree Delete(ElementType X, AvlTree T) {
                     if (Height(T->Right) - Height(T->Left) == 2) {
                               TmpCell = T->Right;
                               if (Height(T->Right) > Height(T->Left)) {
-                                        SingleRotateWithRight(T);
+                                        T = SingleRotateWithRight(T);
                               } else {
-                                        DoubleRotateWithRight(T);
+                                        T = DoubleRotateWithRight(T);
                               }
                     }
           } else if (X > T->Element) {
@@ -183,19 +183,20 @@ AvlTree Delete(ElementType X, AvlTree T) {
                     if (Height(T->Left) - Height(T->Right) == 2) {
                               TmpCell = T->Left;
                               if (Height(T->Left) > Height(T->Right)) {
-                                        SingleRotateWithLeft(T);
+                                        T = SingleRotateWithLeft(T);
                               } else {
-                                        DoubleRotateWithLeft(T);
+                                        T = DoubleRotateWithLeft(T);
                               }
                     }
           } else {
-                    Position Mid;
+                    Position Mid, Temp;
                     if ((T->Left) && (T->Right)) {
-                              Position Temp;
                               if (Height(T->Left) > Height(T->Right)) {
                                         Temp = FindMax(T->Left);
                                         Mid = Temp->Parents;
-                                        Mid->Right = Temp->Left;
+                                        if (Mid != NULL) {
+                                                  Mid->Right = Temp->Left;
+                                        }
                                         Temp->Left = T->Left;
                                         Temp->Right = T->Right;
                                         Temp->Parents = T->Parents;
@@ -209,7 +210,9 @@ AvlTree Delete(ElementType X, AvlTree T) {
                               } else {
                                         Temp = FindMin(T->Right);
                                         Mid = Temp->Parents;
-                                        Mid->Left = Temp->Right;
+                                        if (Mid != NULL) {
+                                                  Mid->Left = Temp->Right;
+                                        }
                                         Temp->Left = T->Left;
                                         Temp->Right = T->Right;
                                         Temp->Parents = T->Parents;    
@@ -224,37 +227,39 @@ AvlTree Delete(ElementType X, AvlTree T) {
                               }
                     } else if (T->Left) {
                               Mid = T->Parents;
-                              if (T->Element > Mid->Element) {
-                                        Mid->Right = T->Left;
-                                        T->Left->Parents = Mid;
-                                        free(T);
-                                        return Mid->Right;
-                              } else {
-                                        Mid->Left = T->Left;
-                                        T->Left->Parents = Mid;
-                                        free(T);
-                                        return Mid->Left;
-                              } 
+                              if (Mid != NULL) {
+                                        if (T->Element > Mid->Element) {
+                                                  Mid->Right = T->Left;
+                                        } else {
+                                                  Mid->Left = T->Left;
+                                        }
+                              }
+                              T->Left->Parents = Mid;
+                              Temp = T->Left;
+                              free(T);
+                              return Temp;
                     } else if (T->Right) {
                               Mid = T->Parents;
-                              if (T->Element > Mid->Element) {
-                                        Mid->Right = T->Right;
-                                        T->Right->Parents = Mid;
-                                        free(T);
-                                        return Mid->Right;
-                              } else {
-                                        Mid->Left = T->Right;
-                                        T->Right->Parents = Mid;
-                                        free(T);
-                                        return Mid->Left;
-                              } 
+                              if (Mid != NULL) {
+                                        if (T->Element > Mid->Element) {
+                                                  Mid->Right = T->Right;
+                                        } else {
+                                                  Mid->Left = T->Right;
+                                        }
+                              }
+                              T->Right->Parents = Mid;
+                              Temp = T->Right;
+                              free(T);
+                              return Temp;
                     } else {
                               Mid = T->Parents;
-                              if (T->Element > Mid->Element) {
-                                        Mid->Right = T->Right;
-                              } else {
-                                        Mid->Left = T->Right;
-                              } 
+                              if (Mid != NULL) {
+                                        if (T->Element > Mid->Element) {
+                                                  Mid->Right = T->Right;
+                                        } else {
+                                                  Mid->Left = T->Right;
+                                        }
+                              }
                               free(T);
                               return NULL;
                     }
@@ -266,18 +271,18 @@ main() {
           AvlTree T;
           Position P;
           T = malloc(sizeof(struct AvlNode));
-          T->Element = 100;
+          T->Element = 7;
           T->Parents = NULL;
           T->Left = NULL;
           T->Right = NULL;
-          for (int i = 1; i < 25; i++) {
+          for (int i = 1; i < 7; i++) {
                     if (i == 10) {
                               continue;
                     }
-                    T = Insert(i*i, T);
+                    T = Insert(i, T);
           }
-          for (int i = 1; i < 30; i++) {
-                    T = Delete(i*i, T);
+          for (int i = 1; i < 8; i++) {
+                    T = Delete(i, T);
           }
           printf("%d\n", Retrieve(FindMax(T)));
           printf("%d\n", Retrieve(FindMin(T)));

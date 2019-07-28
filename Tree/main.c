@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include "Tree.h"
+
 main() {
           SearchTree T = malloc(sizeof(struct TreeNode));
           T->Left = NULL;
