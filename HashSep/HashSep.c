@@ -2,7 +2,7 @@
  * @Author: AGOGIN 
  * @Date: 2019-07-28 17:46:53 
  * @Last Modified by: AGOGIN
- * @Last Modified time: 2019-07-28 22:43:14
+ * @Last Modified time: 2019-07-29 10:30:33
  */
 #include "HashSep.h"
 #include <stdio.h>
@@ -94,9 +94,22 @@ void Insert(ElementType Key, HashTable H) {
 }
 
 ElementType Retrieve(Position P) {
-          return P->Element;
+          if (P == NULL) {
+                    return NULL;
+          } else {
+                    return P->Element;
+          }
 }
 
 void DestroyTable(HashTable H) {
-          
+          Position Temp, TmpCell;
+          for (int i = 0; i < H->TableSize; i++) {
+                    Temp = H->TheLists[i]->Next;
+                    H->TheLists[i]->Next = NULL;
+                    while (Temp == NULL) {
+                              TmpCell = Temp->Next;
+                              free(Temp);
+                              Temp = TmpCell;
+                    }
+          }
 }
