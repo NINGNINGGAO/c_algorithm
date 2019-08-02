@@ -2,7 +2,7 @@
  * @Author: AGOGIN 
  * @Date: 2019-08-02 10:34:20 
  * @Last Modified by: AGOGIN
- * @Last Modified time: 2019-08-02 16:38:52
+ * @Last Modified time: 2019-08-02 16:52:10
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -22,7 +22,7 @@ static void Compute_Prefix(char* nums, int numslen, int Next[]) {
           }
 }
 
-int KMP(char* T, int numsTlen, char*P, int numsPlen) {
+int KMP(char* T, int numsTlen, char* P, int numsPlen) {
           int Next[numsPlen];
           Compute_Prefix(P, numsPlen, Next);
           int q = -1;
