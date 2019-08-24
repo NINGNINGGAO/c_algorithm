@@ -1,8 +1,0 @@
-{
-          "files.associations": {
-                    "stdio.h": "c",
-                    "cmath": "c",
-                    "list.h": "c",
-                    "stack.h": "c"
-          }
-}
