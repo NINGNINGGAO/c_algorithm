@@ -6,12 +6,12 @@
  */
 #include <stdio.h>
 
-void InsertionSort(int* nums, int numsSize) {
+void InsertionSort(int* nums, int p, int q) {
     int key;
-    for (int j = 1; j < numsSize; j++) {
+    for (int j = p + 1; j <= q; j++) {
         key = nums[j];
         int i = j - 1;
-        while (i >= 0 && nums[i] > key) {
+        while (i >= p && nums[i] > key) {
             nums[i + 1] = nums[i];
             i = i - 1;
         }
@@ -22,7 +22,7 @@ void InsertionSort(int* nums, int numsSize) {
 main() {
     int nums[] = {7,8,9,4,5,6,1,2,3,0};
     int numsSize = sizeof(nums) / sizeof(int);
-    InsertionSort(nums, numsSize);
+    InsertionSort(nums, 1, numsSize - 1);
     for (int i = 0; i < numsSize; i++) {
         printf("%d\n", nums[i]);
     }

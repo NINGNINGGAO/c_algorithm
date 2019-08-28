@@ -6,10 +6,10 @@
  */
 #include <stdio.h>
 
-void BubbleSort(int* nums, int numsSize) {
+void BubbleSort(int* nums, int p, int q) {
     int i, j, temp;
-    for (i = 0; i < numsSize - 1; i++) {
-        for (j = 0; j < numsSize - 1 - i; j++) {
+    for (i = p; i < q; i++) {
+        for (j = p; j < q - i; j++) {
             if (nums[j] > nums[j+1]) {
                 temp = nums[j];
                 nums[j] = nums[j+1];
@@ -20,9 +20,9 @@ void BubbleSort(int* nums, int numsSize) {
 }
 
 main() {
-    int nums[] = {7,8,9,4,5,6,1,2,3,0};
+    int nums[] = {7,8,9,4,5,6,1,2,3,0, 10};
     int numsSize = sizeof(nums) / sizeof(int);
-    BubbleSort(nums, numsSize);
+    BubbleSort(nums, 1, numsSize - 1);
     for (int i = 0; i < numsSize; i++) {
         printf("%d\n", nums[i]);
     }

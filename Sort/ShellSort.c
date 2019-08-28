@@ -6,12 +6,13 @@
  */
 #include <stdio.h>
 
-void ShellSort(int* nums, int numsSize) {
+void ShellSort(int* nums, int p, int q) {
+    int numsSize = q - p + 1;
     int i, j, temp, interval;
     for (interval = numsSize >> 1; interval > 0; interval >>= 1) {
-        for (i = interval; i < numsSize; i++) {
+        for (i = interval + p; i < numsSize + p; i++) {
             temp = nums[i];
-            for (j = i - interval; j >= 0 && nums[j] > temp; j -= interval) {
+            for (j = i - interval; j >= p && nums[j] > temp; j -= interval) {
                 nums[j + interval] = nums[j];
                 nums[j] = temp;
             }
@@ -22,7 +23,7 @@ void ShellSort(int* nums, int numsSize) {
 main() {
     int nums[] = {7,8,9,4,5,6,1,2,3,0};
     int numsSize = sizeof(nums) / sizeof(int);
-    ShellSort(nums,numsSize);
+    ShellSort(nums,1, numsSize - 1);
     int i;
     for (i = 0; i < numsSize; i++) {
         printf("%d\n", nums[i]);

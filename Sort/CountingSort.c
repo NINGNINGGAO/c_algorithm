@@ -6,10 +6,11 @@
  */
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-void CountingSort(int* nums, int numsSize) {
-          int  numsmin = nums[0], numsmax = nums[0];
-          for (int i = 1; i < numsSize; i++) {
+void CountingSort(int* nums, int p, int q) {
+          int  numsmin = nums[p], numsmax = nums[p];
+          for (int i = p; i <= q; i++) {
                     if (nums[i] > numsmax) {
                               numsmax = nums[i];
                     }
@@ -18,27 +19,28 @@ void CountingSort(int* nums, int numsSize) {
                     }
           }
           int numslength = numsmax - numsmin + 1;
-          int* C = (int*)calloc(sizeof(int), numslength);
-          for (int j = 0; j < numsSize; j++) {
+          int* C = malloc(sizeof(int) * numslength);
+          memset(C, 0, numslength);
+          for (int j = p; j <= q; j++) {
                     C[nums[j] - numsmin]++;
           }
           for (int k = 1; k < numslength; k++) {
                     C[k] = C[k] + C[k - 1];
           }
-          int* numsSort = (int*)malloc(sizeof(int) * numsSize);
-          for (int h = numsSize - 1; h >= 0; h--) {
+          int* numsSort = malloc(sizeof(int) * (q - p + 1));
+          for (int h = q; h >= p; h--) {
                     numsSort[C[nums[h] - numsmin] - 1] = nums[h];
                     C[nums[h] - numsmin]--;
           }
-          for (int i = 0; i < numsSize; i++) {
-                    nums[i] = numsSort[i];
+          for (int i = p; i <= q; i++) {
+                    nums[i] = numsSort[i - p];
           }
 }
 
 main() {
-          int nums[] = {7,8,9,4,5,6,2,3,17,18,19,15,16,12,13,50};
+          int nums[] = {11,3,4,5,6,7,8,9,15,16};
           int numsSize = sizeof(nums) / sizeof(int);
-          CountingSort(nums, numsSize);
+          CountingSort(nums, 1, numsSize - 1);
           for (int i = 0; i < numsSize; i++) {
                     printf("%d\n", nums[i]);
           }

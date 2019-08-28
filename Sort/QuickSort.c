@@ -31,15 +31,10 @@ void Quick(int* nums, int p, int r) {
           }
 }
 
-void QuickSort(int* nums, int numsSize) {
-          int p = 0, r = numsSize - 1;
-          Quick(nums, p, r);
-}
-
 main() {
           int nums[] = {7,8,9,4,5,6,1,2,3,0,17,18,19,14,15,16,11,12,13,10};
           int numsSize = sizeof(nums) / sizeof(int);
-          QuickSort(nums, numsSize);
+          Quick(nums, 1,numsSize - 1);
           for (int i = 0; i < numsSize; i++) {
                     printf("%d\n", nums[i]);
           }

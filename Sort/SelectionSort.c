@@ -6,11 +6,11 @@
  */
 #include <stdio.h>
 
-void SelectionSort(int* nums, int numsSize) {
+void SelectionSort(int* nums, int p, int q) {
     int i, j, k, temp;
-    for (i = 0; i < numsSize - 1; i++) {
+    for (i = p; i < q; i++) {
         k = i;
-        for (j = i + 1; j < numsSize; j++) {
+        for (j = i + 1; j <= q; j++) {
             if (nums[j] < nums[k]) {
                 k = j;
             }
@@ -24,7 +24,7 @@ void SelectionSort(int* nums, int numsSize) {
 main() {
     int nums[] = {7,8,9,4,5,6,1,2,3,0};
     int numsSize = sizeof(nums) / sizeof(int);
-    SelectionSort(nums, numsSize);
+    SelectionSort(nums, 1, numsSize - 1);
     for (int i = 0; i < numsSize; i++) {
         printf("%d\n", nums[i]);
     }

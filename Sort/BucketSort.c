@@ -6,46 +6,45 @@
  */
 #include <stdio.h>
 
+typedef double ElementType;
 typedef struct LINK {
-    float val;
-    struct LINK* prev;
+    ElementType val;
     struct LINK* next;
 } Node;
 
-void BucketSort(float* nums, int numsSize) {
-          Node B[numsSize], temp[numsSize];
-          for (int i = 0; i < numsSize; i++) {
-              B[i] = (Node){0, NULL, NULL};
-              temp[i] = (Node){nums[i], NULL, NULL};
-          }
-          Node* mid;
-          for (int i = 0; i < numsSize; i++) {
-              mid = &B[(int)(numsSize * nums[i])];
-              while (mid->next != NULL && temp[i].val >= mid->next->val) {
-                  mid = mid->next;
-              } 
-              temp[i].prev = mid;
-              temp[i].next = mid->next;
-              if (mid->next != NULL) {
-                  mid->next->prev = &temp[i];
-              }
-              mid->next = &temp[i];
-          }
-          int j = 0;
-          Node* h;
-          for (int i = 0; i < numsSize; i++) {
-              h = B[i].next;
-              while (h != NULL) {
-                  nums[j++] = h->val;
-                  h = h->next;
-              }
-          }
+void BucketSort(ElementType* nums, int p, int q) {
+    int Bucketnum = 10;
+    Node B[Bucketnum];
+    for (int i = 1; i < Bucketnum; i++) {
+        B[i] = (Node){0, NULL};
+    }
+    Node* mid, *temp, *tmp;
+    for (int i = p; i <= q; i++) {
+        mid = malloc(sizeof(Node));
+        *mid = (Node){nums[i], NULL};
+        temp = &B[((int)(nums[i] * Bucketnum))];
+        while (temp->next != NULL && temp->next->val < mid->val) {
+            temp = temp->next;
+        }
+        tmp = temp->next;
+        temp->next = mid;
+        mid->next = tmp;
+    }
+    int j = p;
+    for (int i = 0; i < Bucketnum; i++) {
+        mid = B[i].next;
+        while (mid != NULL) {
+            nums[j++] = mid->val;
+            mid = mid->next;
+        }
+    }
 }
 
+
 main() {
-    float nums[] = {0.78,0.17,0.39,0.26,0.72,0.94,0.21,0.12,0.23,0.68,0.01,0.05,0.56,0.60,0.88,0.66,0.99};
-    int numsSize = sizeof(nums) / sizeof(int);
-    BucketSort(nums, numsSize);
+    ElementType nums[] = {0.78,0.17,0.39,0.26,0.72,0.94,0.21,0.12,0.23,0.68,0.01,0.05,0.56,0.60,0.88,0.66,0.99};
+    int numsSize = sizeof(nums) / sizeof(ElementType);
+    BucketSort(nums, 1, numsSize - 1);
     for (int i = 0; i < numsSize; i++) {
         printf("%f\n", nums[i]);
     }
